@@ -1,0 +1,73 @@
+$z-index-tool-options: 99999;
+
+.dev-tools-tool-options {
+  font-family: 'Arial', sans-serif;
+
+  position: fixed;
+  bottom: 15px;
+  right: 70px;
+  z-index: $z-index-tool-options;
+
+  min-width: 180px;
+  padding: 20px 20px 25px;
+
+  background-color: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .35);
+  border: 1px solid #EAEAEC;
+  border-radius: 5px;
+
+  user-select: none;
+
+  &__title {
+    font-size: 24px;
+
+    width: 100%;
+    margin-bottom: 20px;
+
+    text-align: center;
+    color: #aaaaaa;
+  }
+
+  &__sub-title {
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-bottom: 10px;
+    margin-top: 20px;
+
+    text-align: center;
+    color: #000;
+  }
+
+  &__upload-text {
+    font-size: 12px;
+
+    display: block;
+    box-sizing: border-box;
+
+    padding: 10px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  &__close {
+    position: absolute;
+    right: 0;
+    top: 5px;
+
+    width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+    opacity: .4;
+
+    svg {
+      width: 65%;
+    }
+
+    &:hover {
+      opacity: .9;
+    }
+  }
+}
+

@@ -1,0 +1,36 @@
+$container-max-width: 1200px;
+$z-index-grid: 99999 - 1;
+$border-style: 1px solid #4affff;
+
+.dev-tool-grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  position: relative;
+
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+
+  cursor: s-resize;
+  border-left: $border-style;
+  border-bottom: $border-style;
+
+  &__unit {
+    box-sizing: border-box;
+
+    width: auto;
+    height: auto;
+
+    border-top: $border-style;
+    border-right: $border-style;
+  }
+
+  &__draggable-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+}

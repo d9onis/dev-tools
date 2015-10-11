@@ -1,0 +1,19 @@
+$z-index-modal: 99999 - 1;
+
+.dev-tools-modal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  width: 100%;
+  height: auto;
+
+  z-index: $z-index-modal;
+
+  &__overlay {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+}
