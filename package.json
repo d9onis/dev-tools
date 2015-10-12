@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "A tool for web developers",
   "license": "MIT",
+  "main": "index.js",
+  "author": {
+    "name": "Denis Chernov"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/d9onis/dev-tools.git"

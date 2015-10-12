@@ -172,7 +172,20 @@ var DevTools = React.createClass({
   }
 });
 
-React.render(
-  React.createElement(DevTools),
-  document.body
-);
+/**
+ * Exports
+ * @returns {*}
+ */
+module.exports = function () {
+  var devBox = document.createElement('div');
+  var id = 'devToolsBox';
+
+  devBox.setAttribute('id', id);
+
+  document.body.appendChild(devBox);
+
+  return React.render(
+    React.createElement(DevTools),
+    document.getElementById(id)
+  );
+};

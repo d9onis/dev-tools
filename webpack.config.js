@@ -12,7 +12,7 @@ module.exports = {
   debug: true,
   devtool: 'sourcemap',
   entry: [
-    './app/app.jsx'
+    './app/index.js'
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
