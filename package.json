@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack"
+    "build": "rm -rf build/* && webpack -p --config webpack.build.config.js"
   },
   "devDependencies": {
     "autoprefixer-loader": "^2.0.0",
