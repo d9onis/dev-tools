@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A tool for web developers",
   "license": "MIT",
-  "main": "index.js",
+  "main": "build/index.js",
   "author": {
     "name": "Denis Chernov"
   },
