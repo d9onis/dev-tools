@@ -11,7 +11,7 @@ module.exports = {
   cache: false,
   debug: false,
   entry: [
-    './app/app.jsx'
+    './app/index.js'
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']

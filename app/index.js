@@ -1,3 +1,3 @@
 var DevTools = require('./app.jsx');
 
-new DevTools();
+module.exports = DevTools;
