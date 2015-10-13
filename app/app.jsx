@@ -188,4 +188,4 @@ module.exports = function () {
     React.createElement(DevTools),
     document.getElementById(id)
   );
-};
+}();
