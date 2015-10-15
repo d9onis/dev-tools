@@ -2,5 +2,5 @@
 
 require('./slider.scss');
 
-module.exports = require('react-rangeslider');
+module.exports = require('react-slider');
 

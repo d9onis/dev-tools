@@ -2,6 +2,7 @@
 
 // Dev dependencies
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Reflux = require('reflux');
 
 // Actions
@@ -172,6 +173,7 @@ var DevTools = React.createClass({
   }
 });
 
+
 /**
  * Exports
  * @returns {*}
@@ -184,7 +186,7 @@ module.exports = function () {
 
   document.body.appendChild(devBox);
 
-  return React.render(
+  return ReactDOM.render(
     React.createElement(DevTools),
     document.getElementById(id)
   );

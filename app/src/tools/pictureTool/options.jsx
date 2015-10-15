@@ -90,8 +90,10 @@ var Options = React.createClass({
 
         <div className='dev-tools-tool-options__sub-title'>Opacity</div>
         <Slider
-          value={ value }
-          onChange={ this.handleChange }/>
+          defaultValue={ value }
+          onChange={ this.handleChange }
+          className={ 'dev-tools-slider' }
+          handleClassName={ 'dev-tools-slider__handle' }/>
 
         <div className='dev-tools-tool-options__sub-title'>Select file</div>
         <Dropzone
