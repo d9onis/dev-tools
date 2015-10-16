@@ -84,8 +84,10 @@ var GridTool = React.createClass({
         onStop={ this.handleStop }>
         <div>
           <div className={ BASE_CLASS }>
-            <div className={ BASE_CLASS + '__draggable-area' }></div>
-            { units }
+            <div className={ BASE_CLASS + '__container' }>
+              <div className={ BASE_CLASS + '__draggable-area' }></div>
+              { units }
+            </div>
           </div>
         </div>
       </Draggable>

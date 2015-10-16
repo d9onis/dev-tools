@@ -3,18 +3,24 @@ $z-index-grid: 99999 - 1;
 $border-style: 1px solid #4affff;
 
 .dev-tool-grid {
-  display: flex;
-  flex-wrap: wrap;
-
-  position: relative;
+  box-sizing: border-box;
 
   width: 100%;
   max-width: $container-max-width;
   margin: 0 auto;
 
-  cursor: s-resize;
-  border-left: $border-style;
-  border-bottom: $border-style;
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+
+    box-sizing: border-box;
+    position: relative;
+    margin: 0 auto;
+
+    cursor: s-resize;
+    border-left: $border-style;
+    border-bottom: $border-style;
+  }
 
   &__unit {
     box-sizing: border-box;

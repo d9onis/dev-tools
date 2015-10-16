@@ -1,2 +1,2 @@
-var DevTools = require('../build');
+var DevTools = require('./app.jsx');
 
