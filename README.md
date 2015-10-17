@@ -1,5 +1,49 @@
 # Dev-tools
 
-## Grid
+A javascript utility for comfort development of projects.
 
-## Picture
+Install with npm
+
+```javascript
+npm install dev-tools --save
+```
+
+Use with node.js, browserify or webpack:
+```javascript
+var DevTools = require('./app.jsx');
+
+new DevTools();
+```
+
+## Options
+
+#### gridOptions
+**Type:** *object*
+
+**Values**
+```javascript
+{
+  unitHeight: 0,
+  colCountInRow: 12,
+  colOuterPadding: 0
+}
+```
+
+`unitHeight` - vertical unit height
+
+`colCountInRow` - grid columns count in one row
+
+`colOuterPadding` - columns outer padding
+
+## Example
+```javascript
+var DevTools = require('./app.jsx');
+
+new DevTools({
+  gridOptions: {
+    unitHeight: 50,
+    colCountInRow: 12,
+    colOuterPadding: 20
+  }
+});
+```
