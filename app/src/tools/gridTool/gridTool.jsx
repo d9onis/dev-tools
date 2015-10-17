@@ -4,6 +4,8 @@ require('./gridTool.scss');
 
 var React = require('react');
 var Draggable = require('react-draggable');
+var ClassNames = require('classnames');
+var Utils = require('../../utils/utils');
 
 var BASE_CLASS = 'dev-tool-grid';
 var localStorageKey = BASE_CLASS + '-position';
@@ -12,7 +14,8 @@ var GridTool = React.createClass({
 
   PropTypes: {
     unitHeight: React.PropTypes.number,
-    colCountInRow: React.PropTypes.number
+    colCountInRow: React.PropTypes.number,
+    colOuterPadding: React.PropTypes.number
   },
 
   getInitialState: function () {
@@ -30,14 +33,11 @@ var GridTool = React.createClass({
       unitHeight
       } = this.props;
 
-    var height = Math.max(
-      document.body.scrollHeight,
-      document.body.offsetHeight,
-      document.documentElement.clientHeight,
-      document.documentElement.scrollHeight,
-      document.documentElement.offsetHeight);
-
-    return Math.round(height / unitHeight) * colCountInRow
+    if (unitHeight != 0) {
+      return Math.round(Utils.contentHeight() / unitHeight) * colCountInRow
+    } else {
+      return colCountInRow
+    }
   },
 
   handleStop: function (event, ui) {
@@ -52,13 +52,20 @@ var GridTool = React.createClass({
     var units = [];
     var {
       unitHeight,
-      colCountInRow
+      colCountInRow,
+      colOuterPadding
       } = this.props;
 
     var unitStyle = {
-      height: unitHeight,
-      maxWidth: 100 / colCountInRow + '%',
-      flexBasis: 100 / colCountInRow + '%'
+      height: unitHeight != 0 ? unitHeight : Utils.contentHeight(),
+      flexBasis: 100 / colCountInRow + '%',
+      paddingLeft: colOuterPadding,
+      paddingRight: colOuterPadding
+    };
+
+    var containerStyle = {
+      marginLeft: - colOuterPadding,
+      marginRight: - colOuterPadding
     };
 
     var {
@@ -69,7 +76,8 @@ var GridTool = React.createClass({
       units.push(<div
         style={unitStyle}
         key={i}
-        className={ BASE_CLASS + '__unit' }>
+        className={ ClassNames(BASE_CLASS + '__unit', colOuterPadding != 0 ? BASE_CLASS + '__unit--outer' : '') }>
+
       </div>)
     }
 
@@ -84,7 +92,7 @@ var GridTool = React.createClass({
         onStop={ this.handleStop }>
         <div>
           <div className={ BASE_CLASS }>
-            <div className={ BASE_CLASS + '__container' }>
+            <div className={ BASE_CLASS + '__container' } style={ containerStyle }>
               <div className={ BASE_CLASS + '__draggable-area' }></div>
               { units }
             </div>

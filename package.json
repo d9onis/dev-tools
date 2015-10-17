@@ -33,6 +33,7 @@
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
+    "classnames": "^2.1.5",
     "react": "0.14.0",
     "react-dom": "^0.14.0",
     "react-draggable": "^0.8.2",

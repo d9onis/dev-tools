@@ -30,6 +30,19 @@ $border-style: 1px solid #4affff;
 
     border-top: $border-style;
     border-right: $border-style;
+
+    &--outer {
+      display: flex;
+      &:before {
+        display: block;
+
+        width: 100%;
+        height: 100%;
+        content: '';
+        border-left: $border-style;
+        border-right: $border-style;
+      }
+    }
   }
 
   &__draggable-area {

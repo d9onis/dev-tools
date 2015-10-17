@@ -5,6 +5,9 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Reflux = require('reflux');
 
+// Utils
+var Utils = require('./src/utils/utils');
+
 // Actions
 var Actions = require('./src/actions/actions');
 
@@ -32,7 +35,12 @@ var PictureToolOptions = require('./src/tools/pictureTool/options.jsx');
 var DevTools = React.createClass({
 
   propTypes: {
-    children: React.PropTypes.object
+    children: React.PropTypes.object,
+    gridOptions: React.PropTypes.shape({
+      unitHeight: React.PropTypes.number.isRequired,
+      colCountInRow: React.PropTypes.number.isRequired,
+      colOuterPadding: React.PropTypes.number
+    }).isRequired
   },
 
   mixins: [
@@ -74,6 +82,9 @@ var DevTools = React.createClass({
   },
 
   getModalComponent: function (modal) {
+    var {
+      gridOptions
+      } = this.props;
 
     if (!modal) {
       return null;
@@ -83,7 +94,10 @@ var DevTools = React.createClass({
 
     switch (modal) {
       case 'GridTool':
-        modalInner = <GridTool unitHeight={50} colCountInRow={12}/>;
+        modalInner = <GridTool
+          unitHeight={ gridOptions.unitHeight }
+          colCountInRow={ gridOptions.colCountInRow }
+          colOuterPadding={ gridOptions.colOuterPadding }/>;
         break;
       case 'PictureTool':
         modalInner = <PictureTool />;
@@ -178,16 +192,51 @@ var DevTools = React.createClass({
  * Exports
  * @returns {*}
  */
-module.exports = function () {
+
+var defaults = {
+  gridOptions: {
+    unitHeight: 0,
+    colCountInRow: 12,
+    colOuterPadding: 0
+  }
+};
+
+/**
+ *
+ * @param options
+ * @constructor
+ */
+var DevToolsModule = function (options) {
   var devBox = document.createElement('div');
   var id = 'devToolsBox';
+  var config = Utils.extend(defaults, options);
 
   devBox.setAttribute('id', id);
 
   document.body.appendChild(devBox);
 
   return ReactDOM.render(
-    React.createElement(DevTools),
+    React.createElement(
+      DevTools,
+      config
+    ),
     document.getElementById(id)
   );
-}();
+};
+
+/**
+ * Exports module
+ */
+(function () {
+  "use strict";
+  var result = DevToolsModule;
+  if (typeof define != undefined && typeof define.amd != undefined) {
+    define(function () {
+      return result;
+    });
+  } else if (typeof module != undefined && typeof module.exports != undefined) {
+    module.exports = result;
+  } else {
+    return result;
+  }
+}());
