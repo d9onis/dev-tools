@@ -37,7 +37,7 @@ new DevTools();
 
 ## Example
 ```javascript
-var DevTools = require('./app.jsx');
+var DevTools = require('dev-tools');
 
 new DevTools({
   gridOptions: {
