@@ -10,7 +10,7 @@ npm install dev-tools --save
 
 Use with node.js, browserify or webpack:
 ```javascript
-var DevTools = require('./app.jsx');
+var DevTools = require('dev-tools');
 
 new DevTools();
 ```
