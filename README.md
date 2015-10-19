@@ -12,7 +12,7 @@ Use with node.js, browserify or webpack:
 ```javascript
 var DevTools = require('dev-tools');
 
-new DevTools();
+DevTools();
 ```
 
 ## Options
@@ -39,7 +39,7 @@ new DevTools();
 ```javascript
 var DevTools = require('dev-tools');
 
-new DevTools({
+DevTools({
   gridOptions: {
     unitHeight: 50,
     colCountInRow: 12,
