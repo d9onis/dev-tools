@@ -1,6 +1,6 @@
 var DevTools = require('./app.jsx');
 
-new DevTools({
+DevTools({
   gridOptions: {
     unitHeight: 0,
     colCountInRow: 12,

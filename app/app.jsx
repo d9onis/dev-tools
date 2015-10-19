@@ -202,11 +202,9 @@ var defaults = {
 };
 
 /**
- *
- * @param options
- * @constructor
+ * Exports module
  */
-var DevToolsModule = function (options) {
+module.exports = function (options) {
   var devBox = document.createElement('div');
   var id = 'devToolsBox';
   var config = Utils.extend(defaults, options);
@@ -223,20 +221,3 @@ var DevToolsModule = function (options) {
     document.getElementById(id)
   );
 };
-
-/**
- * Exports module
- */
-(function () {
-  "use strict";
-  var result = DevToolsModule;
-  if (typeof define != undefined && typeof define.amd != undefined) {
-    define(function () {
-      return result;
-    });
-  } else if (typeof module != undefined && typeof module.exports != undefined) {
-    module.exports = result;
-  } else {
-    return result;
-  }
-}());
