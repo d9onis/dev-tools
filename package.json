@@ -1,6 +1,6 @@
 {
   "name": "dev-tools",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A tool for web developers",
   "license": "MIT",
   "main": "build/index.js",
