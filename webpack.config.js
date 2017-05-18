@@ -1,52 +1,57 @@
-'use strict';
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  entry: {
+    app: './app-v.2.x/index.tsx'
+  },
   output: {
-    filename: 'index.js',
-    publicPath: '/assets/'
+    filename: '[name].js',
+    path: '/'
   },
 
-  cache: false,
-  debug: true,
-  devtool: 'sourcemap',
-  entry: [
-    './app/index.js'
-  ],
+  devtool: 'source-map',
+
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: [ '.ts', '.tsx', '.js', '.json' ]
   },
-  resolveLoader: {
-    fallback: path.join(__dirname, './node_modules')
-  },
+
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /(node_modules)/,
-        loaders: ['babel']
+        test: /\.tsx|ts?$/,
+        loader: [ 'awesome-typescript-loader' ]
       },
       {
-        test: /\.scss$/,
-        exclude: /(node_modules)/,
-        loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded'
+        test: /\.css?$/,
+        loader: [ 'style-loader', 'css-loader' ]
       },
       {
-        test: /\.svg$/,
-        loader: 'svg-inline'
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'source-map-loader'
       }
     ]
   },
-  plugins: [ ],
+
   devServer: {
-    contentBase: "./app",
+    historyApiFallback: true,
+    contentBase: './app-v.2.x',
     noInfo: true,
-    hot: false,
+    hot: true,
     inline: true,
-    port: '3331',
+    port: '3338',
     stats: { colors: true }
-  }
+  },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new HtmlWebpackPlugin({
+                            filename: 'index.html',
+                            title: 'DevTools Template',
+                            chunks: [ 'app' ]
+                          }),
+  ]
 };
-
-
